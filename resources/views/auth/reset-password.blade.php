@@ -28,7 +28,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Reset Password') }}
+                    {{ __('Đặt lại mật khẩu') }}
                 </x-button>
             </div>
         </form>
