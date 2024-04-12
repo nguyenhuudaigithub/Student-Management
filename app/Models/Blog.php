@@ -23,4 +23,9 @@ class Blog extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function userBlogs()
+    {
+        return $this->hasMany(UserBlog::class, 'blogId');
+    }
 }

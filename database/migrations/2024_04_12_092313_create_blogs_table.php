@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->timestamps();
         });
+
+        Schema::table('blogs', function (Blueprint $table) {
+            $table->foreignId('blogId')->constrained('blogs')->onDelete('cascade');
+        });
     }
 
     /**
