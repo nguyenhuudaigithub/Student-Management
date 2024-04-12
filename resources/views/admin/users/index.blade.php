@@ -19,7 +19,11 @@
                 <td>{{ $user->isAdmin ? 'Quản trị viên' : 'Người dùng' }}</td>
                 <td>
                     <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Chỉnh sửa</a>
-                    <!-- Các nút xóa có thể thêm sau -->
+                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

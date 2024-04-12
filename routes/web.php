@@ -24,6 +24,7 @@ Route::middleware([Authenticate::class])->group(function () {
         Route::get('/admin/users', [UserAdminController::class, 'index'])->name('admin.users.index');;
         Route::get('/admin/users/{id}/edit', [UserAdminController::class, 'edit'])->name('admin.users.edit');
         Route::put('/admin/users/{id}', [UserAdminController::class, 'update'])->name('admin.users.update');
+        Route::delete('/admin/users/{id}', [UserAdminController::class, 'destroy'])->name('admin.users.destroy');
     });
 });
 
