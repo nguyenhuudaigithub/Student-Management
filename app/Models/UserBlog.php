@@ -10,17 +10,17 @@ class UserBlog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'userId',
-        'blogId',
+        'user_id',
+        'blog_id',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'userId');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function blog()
     {
-        return $this->belongsTo(Blog::class, 'blogId');
+        return $this->belongsTo(Blog::class, 'blog_id');
     }
 }
