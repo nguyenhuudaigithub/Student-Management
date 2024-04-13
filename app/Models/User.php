@@ -63,11 +63,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'isAdmin' => 'boolean',
         ];
     }
 
-    public function userBlogs()
+    public function blogs()
     {
-        return $this->hasMany(UserBlog::class, 'userId');
+        return $this->belongsToMany(Blog::class, 'user_blogs', 'user_id', 'blog_id')->withTimestamps();
     }
 }

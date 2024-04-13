@@ -18,11 +18,8 @@ return new class extends Migration
             $table->text('detail');
             $table->string('tags')->nullable();
             $table->string('slug')->unique();
+            $table->string('isActive')->default('1');;
             $table->timestamps();
-        });
-
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->foreignId('blogId')->constrained('blogs')->onDelete('cascade');
         });
     }
 

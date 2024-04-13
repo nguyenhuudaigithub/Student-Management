@@ -16,6 +16,10 @@ class Blog extends Model
         'detail',
         'tags',
         'slug',
+        'isActive',
+    ];
+    protected $casts = [
+        'isActive' => 'boolean',
     ];
 
     public function setTitleAttribute($value)
@@ -24,8 +28,8 @@ class Blog extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function userBlogs()
+    public function users()
     {
-        return $this->hasMany(UserBlog::class, 'blogId');
+        return $this->belongsToMany(User::class, 'user_blogs', 'blog_id', 'user_id')->withTimestamps();
     }
 }

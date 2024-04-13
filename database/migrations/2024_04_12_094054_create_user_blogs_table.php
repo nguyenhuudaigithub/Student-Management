@@ -15,8 +15,8 @@ class CreateUserBlogsTable extends Migration
     {
         Schema::create('user_blogs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('userId')->constrained('users')->onDelete('cascade');
-            $table->foreignId('blogId')->constrained('blogs')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('blog_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
