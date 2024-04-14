@@ -1,3 +1,7 @@
+@extends('admin.layouts.layout')
+
+@section('contentAdmin')
+
 <div class="container">
     <h1>Danh sách người dùng</h1>
     <table class="table">
@@ -30,3 +34,4 @@
         </tbody>
     </table>
 </div>
+@endsection

@@ -1,4 +1,7 @@
-<div class="container">
+@extends('admin.layouts.layout')
+
+@section('contentAdmin')
+<section class="wrapper">
     <h1>Danh sách bài viết</h1>
     <table class="table">
         <thead>
@@ -33,4 +36,5 @@
             @endforeach
         </tbody>
     </table>
-</div>
+</section>
+@endsection

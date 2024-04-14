@@ -1,3 +1,6 @@
+@extends('admin.layouts.layout')
+
+@section('contentAdmin')
 <div class="container">
     <h1>Chỉnh sửa người dùng</h1>
     <form method="POST" action="{{ route('admin.users.update', $user->id) }}">
@@ -22,3 +25,4 @@
         <button type="submit" class="btn btn-primary">Lưu</button>
     </form>
 </div>
+@endsection
