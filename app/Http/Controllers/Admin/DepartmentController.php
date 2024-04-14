@@ -11,7 +11,7 @@ Class DepartmentController extends Controller
     public function Department()
     {
         $departmentList = Department::all();
-        return view('department.department', compact('departmentList'));
+        return view('admin.department.department', compact('departmentList'));
     }
 
     /**
@@ -21,7 +21,7 @@ Class DepartmentController extends Controller
      */
     public function DepartmentAdd()
     {
-        return view('department.add-department');
+        return view('admin.department.add-department');
     }
 
     /**
@@ -41,10 +41,10 @@ Class DepartmentController extends Controller
             $Department = new Department;
             $Department->name = $request->name;
             $Department->save();
-            return redirect()->route('Department/list');
+            return redirect()->route('admin/Department/list');
         } catch (\Exception $e) {
 
-            return redirect()->route('department/list');
+            return redirect()->route('admin/department/list');
         }
     }
 
@@ -57,7 +57,7 @@ Class DepartmentController extends Controller
     public function DepartmentEdit($id)
     {
         $DepartmentEdit = Department::find($id);
-        return view('department.edit-department', compact('DepartmentEdit'));
+        return view('admin.department.edit-department', compact('DepartmentEdit'));
     }
 
     /**
@@ -79,10 +79,10 @@ Class DepartmentController extends Controller
             $Department->name = $request->name;
             $Department->save();
 
-            return redirect()->route('department/list');
+            return redirect()->route('admin/department/list');
         } catch (\Exception $e) {
 
-            return redirect()->route('department/list');
+            return redirect()->route('admin/department/list');
         }
     }
 
@@ -99,14 +99,14 @@ Class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         if (!$department) {
 
-            return redirect()->route('department/list');
+            return redirect()->route('admin/department/list');
         }
 
         try {
             $department->delete();
-            return redirect()->route('department/list');
+            return redirect()->route('admin/department/list');
         } catch (\Exception $e) {
-            return redirect()->route('department/list');
+            return redirect()->route('admin/department/list');
         }
     }
 }

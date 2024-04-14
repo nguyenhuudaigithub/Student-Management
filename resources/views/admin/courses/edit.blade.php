@@ -1,68 +1,46 @@
 @extends('admin.layouts.layout')
 
 @section('contentAdmin')
-<h1>Chỉnh Sửa Khóa Học</h1>
+<div class="container">
+    <h1>Chỉnh Sửa Bài Viết</h1>
 
-<form action="{{ route('admin.courses.store') }}" method="POST">
-    @csrf
-    <div class="form-group">
-        <label for="name">Tên Khóa Học</label>
-        <input type="text" name="name" id="name" class="form-control">
-        @error('name')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+    <form action="{{ route('admin.courses.update', $courses->id) }}" method="POST">
+        @csrf
+        @method('PUT')
 
-    <div class="form-group">
-        <label for="details">Chi Tiết</label>
-        <textarea name="details" id="details" class="form-control" style="height: 300px"></textarea>
-        @error('details')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+        <div class="form-group">
+            <label for="name">Tên Khóa Học</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ $courses->name }}">
+        </div>
 
-    <div class="form-group">
-        <label for="price">Giá</label>
-        <input type="text" name="price" id="price" class="form-control">
-        @error('price')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+        <div class="form-group">
+            <label for="details">Chi Tiết</label>
+            <textarea name="details" id="details" class="form-control">{{ $courses->details }}</textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="start_time">Thời Gian Bắt Đầu</label>
-        <input type="text" name="start_time" id="start_time" class="form-control">
-        @error('start_time')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-
-    <div class="form-group">
-        <label for="end_time">Thời Gian Kết Thúc</label>
-        <input type="text" name="end_time" id="end_time" class="form-control">
-        @error('end_time')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-
-    <div class="form-group">
-        <label for="classroom">Mã Lớp Học</label>
-        <input type="text" name="classroom" id="classroom" class="form-control">
-        @error('classroom')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="department_id">department_id</label>
-        <input type="text" name="department_id" id="department_id" class="form-control">
-        @error('department_id')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-
-    <button type="submit" class="btn btn-primary">Chỉnh Sửa Khóa Học</button>
-</form>
-
+        <div class="form-group">
+            <label for="price">Giá</label>
+            <textarea name="price" id="price" class="form-control">{{ $courses->price }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="start_time">Thời gian bắt đầu</label>
+            <textarea name="start_time" id="start_time" class="form-control">{{ $courses->start_time }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="end_time">Thời Gian Kết Thúc</label>
+            <textarea name="end_time" id="end_time" class="form-control">{{ $courses->end_time }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="classroom">Mã Lớp Họcc</label>
+            <textarea name="classroom" id="classroom" class="form-control">{{ $courses->classroom }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="department_id">Khoa</label>
+            <textarea name="department_id" id="department_id" class="form-control">{{ $courses->department_id }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Chỉnh Sửa Khóa Học</button>
+    </form>
+</div>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
 <script>
     ClassicEditor

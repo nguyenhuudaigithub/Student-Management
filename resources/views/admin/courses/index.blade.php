@@ -6,7 +6,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>#ID</th>
                 <th>Tên bài viết</th>
                 <th>Mô tả</th>
                 <th>Giá</th>
@@ -14,6 +14,7 @@
                 <th>Ngày kết thúc</th>
                 <th>Lớp học</th>
                 <th>Khoa</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody>

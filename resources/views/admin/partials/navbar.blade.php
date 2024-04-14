@@ -35,7 +35,16 @@
                     <li><a href="/admin/blogs/create">Thêm Mới</a></li>
                 </ul>
             </li>
-
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-th"></i>
+                    <span>Khoa</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="/admin/department/list">Danh Sách Khoa</a></li>
+                    <li><a href="/admin/department/add/page">Thêm Mới Khoa</a></li>
+                </ul>
+            </li>
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-th"></i>
