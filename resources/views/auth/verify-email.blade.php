@@ -1,9 +1,6 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('layouts.app')
 
+@section('content')
         <div class="mb-4 text-sm text-gray-600">
             {{ __('Trước khi tiếp tục, bạn có thể xác minh địa chỉ email của mình bằng cách nhấp vào liên kết chúng tôi vừa gửi email cho bạn không? Nếu bạn không nhận được email, chúng tôi sẽ sẵn lòng gửi cho bạn một email khác.') }}
         </div>
@@ -41,5 +38,4 @@
                 </form>
             </div>
         </div>
-    </x-authentication-card>
-</x-guest-layout>
+@endsection
