@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('home');
 })->name('');
 
+
+
 Route::controller(DepartmentController::class)->group(function () {
     Route::get('department/list', 'department')->middleware('auth')->name('department/list'); // list student
     Route::get('department/add/page', 'departmentAdd')->middleware('auth')->name('department/add/page'); // page student
@@ -29,7 +31,7 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('department/edit/{id}', 'departmentEdit'); // view for edit
     Route::post('department/update', 'departmentUpdate')->name('department/update'); // update record student
     Route::post('department/delete', 'delete')->name('department.delete');
-    Route::resource('department','DepartmentController');
+    Route::resource('department', 'DepartmentController');
 });
 
 Route::get('/courses', ['App\Http\Controllers\User\coursesController', 'index']);
@@ -42,6 +44,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::middleware([CheckAdmin::class])->group(function () {
+        Route::get('/ad', function () {
+            return view('admin.layouts.layout');
+        })->name('admin.dashboard');
 
         // Quản lý người dùng
         Route::get('/admin/users', [UserAdminController::class, 'index'])->name('admin.users.index');
@@ -64,7 +69,5 @@ Route::middleware([
         Route::get('admin/blogs/edit/{id}', [BlogsController::class, 'edit'])->name('admin.blogs.edit');
         Route::put('admin/blogs/update/{id}', [BlogsController::class, 'update'])->name('admin.blogs.update');
         Route::delete('admin/blogs/delete/{id}', [BlogsController::class, 'destroy'])->name('admin.blogs.delete');
-
-
     });
 });

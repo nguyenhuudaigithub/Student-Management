@@ -1,54 +1,66 @@
-@section('content')
-<h1>Edit courses</h1>
+@extends('admin.layouts.layout')
 
-<form action="{{ route('admin.courses.update', $courses->id) }}" method="POST">
+@section('contentAdmin')
+<h1>Chỉnh Sửa Khóa Học</h1>
+
+<form action="{{ route('admin.courses.store') }}" method="POST">
     @csrf
-    @method('PUT')
-
-
     <div class="form-group">
-        <label for="name">name</label>
-        <textarea name="name" id="name" class="form-control">{{ $courses->name }}</textarea>
+        <label for="name">Tên Khóa Học</label>
+        <input type="text" name="name" id="name" class="form-control">
+        @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="form-group">
-        <label for="details">Details</label>
-        <textarea name="details" id="details" class="form-control" style="height: 300px">{{ $courses->details }}</textarea>
+        <label for="details">Chi Tiết</label>
+        <textarea name="details" id="details" class="form-control" style="height: 300px"></textarea>
+        @error('details')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="form-group">
-        <label for="price">price</label>
-        <textarea name="price" id="price" class="form-control">{{ $courses->price }}</textarea>
+        <label for="price">Giá</label>
+        <input type="text" name="price" id="price" class="form-control">
+        @error('price')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
-    <div class="form-group">
-    <label for="start_time">Start Time</label>
-    <input type="text" name="start_time" id="start_time" class="form-control" value="{{ old('start_time', $courses->start_time) }}">
-    @error('start_time')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
 
-<div class="form-group">
-    <label for="end_time">End Time</label>
-    <input type="text" name="end_time" id="end_time" class="form-control" value="{{ old('end_time', $courses->end_time) }}">
-    @error('end_time')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
     <div class="form-group">
-        <label for="classroom">classroom</label>
-        <textarea name="classroom" id="classroom" class="form-control">{{ $courses->classroom }}</textarea>
+        <label for="start_time">Thời Gian Bắt Đầu</label>
+        <input type="text" name="start_time" id="start_time" class="form-control">
+        @error('start_time')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <label for="end_time">Thời Gian Kết Thúc</label>
+        <input type="text" name="end_time" id="end_time" class="form-control">
+        @error('end_time')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <label for="classroom">Mã Lớp Học</label>
+        <input type="text" name="classroom" id="classroom" class="form-control">
+        @error('classroom')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="department_id">department_id</label>
-        <textarea name="department_id" id="department_id" class="form-control">{{ $courses->department_id }}</textarea>
+        <input type="text" name="department_id" id="department_id" class="form-control">
+        @error('department_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
 
-
-
-
-
-    <button type="submit" class="btn btn-primary">Update courses</button>
+    <button type="submit" class="btn btn-primary">Chỉnh Sửa Khóa Học</button>
 </form>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
@@ -64,3 +76,4 @@
             console.error(error);
         });
 </script>
+@endsection

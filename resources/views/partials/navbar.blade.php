@@ -49,6 +49,15 @@
                                          <button type="submit" class="dropdown-item">Đăng xuất</button>
                                      </form>
                                  </li>
+                                 <li>
+                                     <hr class="dropdown-divider">
+                                 </li>
+                                 @if(Auth::user()->isAdmin)
+                                 <li>
+                                     <a href="/ad" class="dropdown-item">Trang Quản Lý</a>
+                                 </li>
+                                 @endif
+
                              </ul>
                          </li>
                          @else
