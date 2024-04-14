@@ -1,36 +1,25 @@
-<div class="container">
-    <h1>Danh sách bài viết người dùng</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Tên bài viết</th>
-                <th>Mô tả</th>
-                <th>Đường dẫn</th>
-                <th>Trạng thái</th>
-                <th>Ngày chỉnh sửa</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($blogs as $blog)
-            <tr>
-                <td>{{ $blog->id }}</td>
-                <td>{{ $blog->title }}</td>
-                <td>{{ $blog->description }}</td>
-                <td>{{ $blog->slug }}</td>
-                <td>{{ $blog->isActive ? 'Hiện thị' : 'Ẩn' }}</td>
-                <td>{{ $blog->updated_at }}</td>
-                <td>
-                    <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="btn btn-primary">Chỉnh sửa</a>
-                    <form action="{{ route('admin.blogs.delete', $blog->id) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+@extends('layouts.app')
+
+@section('content')
+@foreach ($blogs as $blog)
+<div class="row g-0">
+    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+        <div class="position-relative h-100">
+            <img class="position-absolute w-100 h-100 rounded" src="https://i.ytimg.com/vi/h4UtOtAOlpQ/maxresdefault.jpg">
+        </div>
+    </div>
+    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+        <div class="h-100 d-flex flex-column justify-content-center p-5">
+            <a href="/blogs/{{ $blog->slug }}">
+                <h1 class="mb-4">{{ $blog->title }}</h1>
+                <p>{{ $blog->tags }}</p>
+                <p class="mb-4">{{ $blog->description }}
+                </p>
+            </a>
+        </div>
+    </div>
 </div>
+
+@endforeach
+
+@endsection

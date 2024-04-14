@@ -6,26 +6,26 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Controllers\Admin\BlogsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 });
 
+Route::get('/', function () {
+    return view('home');
+})->name('');
 
 Route::get('/blogs', ['App\Http\Controllers\User\BlogsController', 'index']);
 Route::get('/blogs/{slug}', ['App\Http\Controllers\User\BlogsController', 'viewBlog']);
 
-Route::middleware([Authenticate::class])->group(function () {
+// Route::middleware([Authenticate::class])->group(function () {
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
     Route::middleware([CheckAdmin::class])->group(function () {
 
         // Quản lý người dùng
