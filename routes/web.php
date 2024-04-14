@@ -11,18 +11,10 @@ use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\BlogsController;
 use App\Http\Controllers\Admin\DepartmentController;
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-});
-
+// home
 Route::get('/', function () {
     return view('home');
 })->name('');
-
-
 
 Route::controller(DepartmentController::class)->group(function () {
     Route::get('department/list', 'department')->middleware('auth')->name('department/list'); // list student
@@ -37,12 +29,18 @@ Route::controller(DepartmentController::class)->group(function () {
 Route::get('/courses', ['App\Http\Controllers\User\coursesController', 'index']);
 Route::get('/courses/{slug}', ['App\Http\Controllers\User\coursesController', 'viewBlog']);
 
+// blog user routes
+Route::get('/blogs', ['App\Http\Controllers\User\BlogsController', 'index']);
+Route::get('/blogs/{slug}', ['App\Http\Controllers\User\BlogsController', 'viewBlog']);
+
 // Route::middleware([Authenticate::class])->group(function () {
+    // login
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    //  isAdmin true
     Route::middleware([CheckAdmin::class])->group(function () {
         Route::get('/ad', function () {
             return view('admin.layouts.layout');
@@ -54,8 +52,6 @@ Route::middleware([
         Route::put('/admin/users/{id}', [UserAdminController::class, 'update'])->name('admin.users.update');
         Route::delete('/admin/users/{id}', [UserAdminController::class, 'destroy'])->name('admin.users.destroy');
 
-        // Bài viết
-
         Route::get('/admin/courses', [coursesController::class, 'index'])->name('admin.courses.index');;
         Route::get('/admin/courses/create', [coursesController::class, 'create'])->name('admin.courses.create');
         Route::post('/admin/courses/store', [coursesController::class, 'store'])->name('admin.courses.store');
@@ -63,6 +59,7 @@ Route::middleware([
         Route::put('admin/courses/update/{id}', [coursesController::class, 'update'])->name('admin.courses.update');
         Route::delete('admin/courses/delete/{id}', [coursesController::class, 'destroy'])->name('admin.courses.delete');
 
+         // Bài viết
         Route::get('/admin/blogs', [BlogsController::class, 'index'])->name('admin.blogs.index');;
         Route::get('/admin/blogs/create', [BlogsController::class, 'create'])->name('admin.blogs.create');
         Route::post('/admin/blogs/store', [BlogsController::class, 'store'])->name('admin.blogs.store');
