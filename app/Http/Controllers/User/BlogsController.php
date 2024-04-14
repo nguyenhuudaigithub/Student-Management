@@ -11,9 +11,10 @@ class BlogsController extends Controller
     // Danh sách blogs
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::where('isActive', true)->get();
         return view('user.blogs.index', compact('blogs'));
     }
+
 
     // Xem bài viết
     public function viewBlog($slug)

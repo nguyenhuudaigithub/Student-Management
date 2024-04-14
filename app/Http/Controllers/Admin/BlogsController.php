@@ -26,10 +26,10 @@ class BlogsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
+            'title' => 'required|string',
+            'description' => 'nullable|string',
             'detail' => 'nullable|string',
-            'tags' => 'nullable|string|max:40',
+            'tags' => 'nullable|string',
             'isActive' => 'required|boolean',
         ]);
 
