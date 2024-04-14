@@ -37,9 +37,17 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input class="form-control border-0" id="name" placeholder="name" type="name" name="name" :value="old('name')" required autofocus autocomplete="username" />
-                                <label for="name">Tên</label>
+                                <label for="name">Họ Tên</label>
                             </div>
                         </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input class="form-control border-0" id="mssv" placeholder="mssv" type="mssv" name="mssv" :value="old('mssv')" required autofocus />
+                                <label for="mssv">MSSV</label>
+                            </div>
+                        </div>
+
 
                         <div class="col-12">
                             <div class="form-floating">
@@ -47,6 +55,7 @@
                                 <label for="email">Email</label>
                             </div>
                         </div>
+
                         <div class="col-12">
                             <div class="form-floating">
                                 <input class="form-control border-0" id="password" placeholder="Password" type="password" name="password" required autocomplete="current-password" />
