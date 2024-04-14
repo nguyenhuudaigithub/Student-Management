@@ -8,7 +8,10 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <div class="mt-4">
+                <x-label for="mssv" value="{{ __('Mã số sinh viên') }}" />
+                <x-input id="mssv" class="block mt-1 w-full" type="text" name="mssv" :value="old('mssv')" required autocomplete="mssv" />
+            </div>
             <div>
                 <x-label for="name" value="{{ __('Họ và tên') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
