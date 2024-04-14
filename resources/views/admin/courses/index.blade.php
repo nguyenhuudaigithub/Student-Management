@@ -27,8 +27,7 @@
                 <td>{{ $courses->start_time }}</td>
                 <td>{{ $courses->end_time }}</td>
                 <td>{{ $courses->classroom }}</td>
-                <td>{{ $courses->department_id }}</td>
-
+                <td>{{ $courses->department->name }}</td>
                 <td>
                     <a href="{{ route('admin.courses.edit', $courses->id) }}" class="btn btn-primary">Chỉnh sửa</a>
                     <form action="{{ route('admin.courses.delete', $courses->id) }}" method="POST" style="display: inline;">

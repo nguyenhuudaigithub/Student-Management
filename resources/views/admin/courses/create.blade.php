@@ -53,12 +53,17 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="department_id">department_id</label>
-        <input type="text" name="department_id" id="department_id" class="form-control">
-        @error('department_id')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+    <label for="department_id">Department</label>
+    <select name="department_id" id="department_id" class="form-control">
+        <option selected disabled>Please Select Department</option>
+        @foreach($departments as $department)
+            <option value="{{ $department->id }}">{{ $department->name }}</option>
+        @endforeach
+    </select>
+    @error('department_id')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+</div>
 
     <button type="submit" class="btn btn-primary">Tạo Khóa Học</button>
 </form>

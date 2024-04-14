@@ -15,4 +15,17 @@
     </form>
 </div>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.3.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#details'))
+        .then(editor => {
+            editor.editing.view.change(writer => {
+                writer.setStyle('height', '300px', editor.editing.view.document.getRoot());
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection
