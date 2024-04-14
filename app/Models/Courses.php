@@ -18,6 +18,7 @@ class Courses extends Model
         'start_time',
         'end_time',
         'classroom',
+        'department_id',
     ];
 
 

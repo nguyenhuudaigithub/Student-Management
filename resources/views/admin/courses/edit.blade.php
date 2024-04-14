@@ -5,10 +5,6 @@
     @csrf
     @method('PUT')
 
-    <div class="form-group">
-        <label for="course_code">course_code</label>
-        <input type="text" name="course_code" id="course_code" class="form-control" value="{{ $courses->course_code }}">
-    </div>
 
     <div class="form-group">
         <label for="name">name</label>
@@ -43,6 +39,12 @@
         <label for="classroom">classroom</label>
         <textarea name="classroom" id="classroom" class="form-control">{{ $courses->classroom }}</textarea>
     </div>
+    <div class="form-group">
+        <label for="department_id">department_id</label>
+        <textarea name="department_id" id="department_id" class="form-control">{{ $courses->department_id }}</textarea>
+    </div>
+
+
 
 
 

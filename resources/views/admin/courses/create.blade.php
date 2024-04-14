@@ -3,15 +3,6 @@
 
 <form action="{{ route('admin.courses.store') }}" method="POST">
     @csrf
-
-    <div class="form-group">
-        <label for="course_code">Course Code</label>
-        <input type="text" name="course_code" id="course_code" class="form-control">
-        @error('course_code')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" class="form-control">
@@ -59,7 +50,13 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-
+    <div class="form-group">
+        <label for="department_id">department_id</label>
+        <input type="text" name="department_id" id="department_id" class="form-control">
+        @error('department_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
     <button type="submit" class="btn btn-primary">Create Courses</button>
 </form>
