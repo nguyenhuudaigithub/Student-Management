@@ -71,4 +71,8 @@ Route::middleware([
         Route::put('admin/blogs/update/{id}', [BlogsController::class, 'update'])->name('admin.blogs.update');
         Route::delete('admin/blogs/delete/{id}', [BlogsController::class, 'destroy'])->name('admin.blogs.delete');
     });
+
+    //Danh sách khoá học (người dùng xem)
+    Route::get('user/courses', [coursesController::class, 'indexUser'])->name('admin.courses.view');;
+
 });

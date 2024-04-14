@@ -17,6 +17,11 @@ class CoursesController extends Controller
         $courses = Courses::all();
         return view('admin.courses.index', compact('courses'));
     }
+    public function indexUser()
+    {
+        $courses = Courses::all();
+        return view('user.courses.view', compact('courses'));
+    }
 
     // Tạo bài viết
     public function create()
