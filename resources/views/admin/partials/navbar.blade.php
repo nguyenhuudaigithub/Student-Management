@@ -58,7 +58,7 @@
             </li>
 
 
-            <li class="sub-menu">
+            <!-- <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-book"></i>
                     <span>Extra Pages</span>
@@ -88,7 +88,7 @@
                     <li><a href="morris.html">Morris</a></li>
                     <li><a href="chartjs.html">Chartjs</a></li>
                 </ul>
-            </li>
+            </li> -->
 
         </ul>
         <!-- sidebar menu end-->
