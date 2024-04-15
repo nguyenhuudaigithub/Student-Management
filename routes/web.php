@@ -19,6 +19,8 @@ Route::get('/', function () {
  //Danh sách khoá học (người dùng xem)
  Route::get('user/courses', [coursesController::class, 'indexUser'])->name('admin.courses.view');;
 
+Route::post('/chat/store', 'ChatController@store');
+
 Route::get('/courses', ['App\Http\Controllers\User\coursesController', 'index']);
 Route::get('/courses/{slug}', ['App\Http\Controllers\User\coursesController', 'viewBlog']);
 
