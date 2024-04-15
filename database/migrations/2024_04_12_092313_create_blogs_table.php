@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('detail');
             $table->string('tags');
             $table->string('slug');
+            $table->string('photo_url');
             $table->string('isActive');
             $table->timestamps();
         });

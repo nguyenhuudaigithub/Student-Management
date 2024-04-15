@@ -17,6 +17,7 @@ class Blog extends Model
         'tags',
         'slug',
         'isActive',
+        'photo_url',
     ];
     protected $casts = [
         'isActive' => 'boolean',

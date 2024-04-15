@@ -5,7 +5,7 @@
 <div class="row g-0 mb-5">
     <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s" style="min-height: 300px;"> <!-- Adjusted min-height -->
         <div class="position-relative h-100">
-            <img class="position-absolute w-100 h-100 rounded" src="https://i.ytimg.com/vi/h4UtOtAOlpQ/maxresdefault.jpg">
+            <img class="position-absolute w-100 h-100 rounded" src="{{ $blog->photo_url }}">
         </div>
     </div>
     <div class="col-lg-8 wow fadeIn" data-wow-delay="0.5s">

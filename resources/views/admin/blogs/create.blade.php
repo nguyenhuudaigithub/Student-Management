@@ -3,7 +3,7 @@
 @section('contentAdmin')
 <h1>Tạo Mới Bài Viết</h1>
 
-<form action="{{ route('admin.blogs.store') }}" method="POST">
+<form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
@@ -24,6 +24,11 @@
     <div class="form-group">
         <label for="tags">Thẻ</label>
         <textarea name="tags" id="tags" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="photo_url">Ảnh</label>
+        <input type="file" name="photo_url" id="photo_url" class="form-control-file">
     </div>
 
     <div class="form-group">

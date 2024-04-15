@@ -29,6 +29,15 @@
         </div>
 
         <div class="form-group">
+            <label for="photo_url">Ảnh</label>
+            @if($blog->photo_url)
+            <img src="{{ $blog->photo_url }}" alt="Blog Photo" height="50" width="50">
+            @endif
+            <input type="file" name="photo_url" id="photo_url" class="form-control-file">
+        </div>
+
+
+        <div class="form-group">
             <label for="isActive">Trạng Thái</label>
             <select class="form-control" id="isActive" name="isActive">
                 <option value="1" {{ $blog->isActive == 1 ? 'selected' : '' }}>Hiện</option>
