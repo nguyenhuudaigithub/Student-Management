@@ -14,6 +14,7 @@
 }
 
 
+
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -31,6 +32,8 @@
 
 /*** Button ***/
 .btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-weight: 500;
     transition: .5s;
 }

@@ -48,6 +48,21 @@
             <span class="text-danger">@error('name') {{ $message }} @enderror</span>
         </div>
 
+        <!-- Department Id -->
+        <div class="col-md-6 col-sm-4">
+            <label for="departmentId" class="form-label">{{ __('Mã phòng ban') }}</label>
+            <input id="departmentId" type="text" class="form-control" wire:model="state.departmentId" required autocomplete="departmentId" />
+            <span class="text-danger">@error('departmentId') {{ $message }} @enderror</span>
+        </div>
+
+        <!-- Address -->
+        <div class="col-md-6 col-sm-4">
+            <label for="address" class="form-label">{{ __('Địa chỉ') }}</label>
+            <input id="address" type="text" class="form-control" wire:model="state.address" required autocomplete="address" />
+            <span class="text-danger">@error('address') {{ $message }} @enderror</span>
+        </div>
+
+
         <!-- Email -->
         <div class="col-md-6 col-sm-4">
             <label for="email" class="form-label">{{ __('Email') }}</label>

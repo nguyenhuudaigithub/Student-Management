@@ -31,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'isAdmin',
         'mssv',
+        'departmentId',
+        'address',
     ];
 
     /**
