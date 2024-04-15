@@ -17,6 +17,7 @@ Route::get('/', function () {
 })->name('');
 
 
+Route::post('/chat/store', 'ChatController@store');
 
 Route::get('/courses', ['App\Http\Controllers\User\coursesController', 'index']);
 Route::get('/courses/{slug}', ['App\Http\Controllers\User\coursesController', 'viewBlog']);
