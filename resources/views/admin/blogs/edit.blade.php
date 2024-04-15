@@ -28,13 +28,13 @@
             <textarea name="tags" id="tags" class="form-control">{{ $blog->tags }}</textarea>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="photo_url">Ảnh</label>
             @if($blog->photo_url)
             <img src="{{ $blog->photo_url }}" alt="Blog Photo" height="50" width="50">
             @endif
             <input type="file" name="photo_url" id="photo_url" class="form-control-file">
-        </div>
+        </div> -->
 
 
         <div class="form-group">

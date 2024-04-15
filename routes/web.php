@@ -16,7 +16,8 @@ Route::get('/', function () {
     return view('home');
 })->name('');
 
-
+ //Danh sách khoá học (người dùng xem)
+ Route::get('user/courses', [coursesController::class, 'indexUser'])->name('admin.courses.view');;
 
 Route::get('/courses', ['App\Http\Controllers\User\coursesController', 'index']);
 Route::get('/courses/{slug}', ['App\Http\Controllers\User\coursesController', 'viewBlog']);
@@ -43,6 +44,7 @@ Route::middleware([
         Route::get('/admin/users/{id}/edit', [UserAdminController::class, 'edit'])->name('admin.users.edit');
         Route::put('/admin/users/{id}', [UserAdminController::class, 'update'])->name('admin.users.update');
         Route::delete('/admin/users/{id}', [UserAdminController::class, 'destroy'])->name('admin.users.destroy');
+
         //Khoa
         Route::controller(DepartmentController::class)->group(function () {
             Route::get('admin/department/list', 'department')->name('admin/department/list'); // list student
@@ -72,7 +74,6 @@ Route::middleware([
         Route::delete('admin/blogs/delete/{id}', [BlogsController::class, 'destroy'])->name('admin.blogs.delete');
     });
 
-    //Danh sách khoá học (người dùng xem)
-    Route::get('user/courses', [coursesController::class, 'indexUser'])->name('admin.courses.view');;
+
 
 });

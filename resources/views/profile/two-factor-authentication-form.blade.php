@@ -1,13 +1,13 @@
-<x-action-section>
-    <x-slot name="title">
-        {{ __('Xác thực hai yếu tố') }}
-    </x-slot>
+<div class="action-section">
+    <div class="action-section-title">
+        <h3>{{ __('Xác thực hai yếu tố') }}</h3>
+    </div>
 
-    <x-slot name="description">
-        {{ __('Thêm bảo mật bổ sung cho tài khoản của bạn bằng xác thực hai yếu tố.') }}
-    </x-slot>
+    <div class="action-section-description">
+        <p>{{ __('Thêm bảo mật bổ sung cho tài khoản của bạn bằng xác thực hai yếu tố.') }}</p>
+    </div>
 
-    <x-slot name="content">
+    <div class="action-section-content">
         <h3 class="text-lg font-medium text-gray-900">
             @if ($this->enabled)
                 @if ($showingConfirmation)
@@ -50,13 +50,11 @@
 
                 @if ($showingConfirmation)
                     <div class="mt-4">
-                        <x-label for="code" value="{{ __('Code') }}" />
-
-                        <x-input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric" autofocus autocomplete="one-time-code"
+                        <label for="code" class="block text-sm font-medium text-gray-700">{{ __('Code') }}</label>
+                        <input id="code" type="text" name="code" class="mt-1 block w-1/2 form-control" inputmode="numeric" autofocus autocomplete="one-time-code"
                             wire:model="code"
                             wire:keydown.enter="confirmTwoFactorAuthentication" />
-
-                        <x-input-error for="code" class="mt-2" />
+                        @error('code') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 @endif
             @endif
@@ -79,46 +77,46 @@
         <div class="mt-5">
             @if (! $this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
-                    <x-button type="button" wire:loading.attr="disabled">
+                    <button type="button" class="btn btn-primary" wire:loading.attr="disabled">
                         {{ __('Bật') }}
-                    </x-button>
+                    </button>
                 </x-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
                     <x-confirms-password wire:then="regenerateRecoveryCodes">
-                        <x-secondary-button class="me-3">
+                        <button type="button" class="btn btn-secondary me-3">
                             {{ __('Tạo lại mã khôi phục') }}
-                        </x-secondary-button>
+                        </button>
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
                     <x-confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-button type="button" class="me-3" wire:loading.attr="disabled">
+                        <button type="button" class="btn btn-primary me-3" wire:loading.attr="disabled">
                             {{ __('Xác nhận') }}
-                        </x-button>
+                        </button>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="showRecoveryCodes">
-                        <x-secondary-button class="me-3">
+                        <button type="button" class="btn btn-secondary me-3">
                             {{ __('Hiển thị mã khôi phục') }}
-                        </x-secondary-button>
+                        </button>
                     </x-confirms-password>
                 @endif
 
                 @if ($showingConfirmation)
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-secondary-button wire:loading.attr="disabled">
+                        <button type="button" class="btn btn-secondary" wire:loading.attr="disabled">
                             {{ __('Hủy') }}
-                        </x-secondary-button>
+                        </button>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-danger-button wire:loading.attr="disabled">
+                        <button type="button" class="btn btn-danger" wire:loading.attr="disabled">
                             {{ __('Vô hiệu hóa') }}
-                        </x-danger-button>
+                        </button>
                     </x-confirms-password>
                 @endif
 
             @endif
         </div>
-    </x-slot>
-</x-action-section>
+    </div>
+</div>

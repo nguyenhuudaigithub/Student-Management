@@ -12,8 +12,9 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
+            <input type="txt" class="form-control" id="email" name="email" value="{{ $user->email }}" readonly>
         </div>
+
         <div class="form-group">
             <label for="isAdmin">Chức vụ</label>
             <select class="form-control" id="isAdmin" name="isAdmin">

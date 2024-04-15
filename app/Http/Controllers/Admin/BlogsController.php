@@ -73,26 +73,11 @@ class BlogsController extends Controller
             'detail' => 'nullable|string',
             'tags' => 'nullable|string',
             'isActive' => 'required|boolean',
-            'photo_url' => ['nullable', 'image', 'max:1024'],
         ]);
 
-        try {
-            $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
 
-            if ($request->hasFile('photo_url')) {
-                if ($blog->photo_url) {
-                    Storage::delete('public/photos/' . basename($blog->photo_url));
-                }
-                $photoPath = $request->file('photo_url')->store('public/photos');
-                $path = asset('storage/photos/' . basename($photoPath));
-                $validatedData['photo_url'] = $path;
-            }
-
-            $blog->update($validatedData);
-
-        } catch (\Exception $e) {
-            return back()->withInput()->withErrors(['photo_url' => $e->getMessage()]);
-        }
+        $blog->update($validatedData);
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully.');
     }
