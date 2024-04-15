@@ -1,39 +1,35 @@
-<x-form-section submit="updatePassword">
-    <x-slot name="title">
-        {{ __('Cập nhật mật khẩu') }}
-    </x-slot>
+<div class="form-section">
+    <h3>{{ __('Cập nhật mật khẩu') }}</h3>
+    <p>{{ __('Đảm bảo tài khoản của bạn đang sử dụng mật khẩu dài, ngẫu nhiên để giữ an toàn.') }}</p>
 
-    <x-slot name="description">
-        {{ __('Đảm bảo tài khoản của bạn đang sử dụng mật khẩu dài, ngẫu nhiên để giữ an toàn.') }}
-    </x-slot>
-
-    <x-slot name="form">
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="current_password" value="{{ __('Mật khẩu hiện tại') }}" />
-            <x-input id="current_password" type="password" class="mt-1 block w-full" wire:model="state.current_password" autocomplete="current-password" />
-            <x-input-error for="current_password" class="mt-2" />
+    <form wire:submit.prevent="updatePassword">
+        <div class="col-md-6 col-sm-4">
+            <label for="current_password" class="form-label">{{ __('Mật khẩu hiện tại') }}</label>
+            <input id="current_password" type="password" class="form-control" wire:model="state.current_password" autocomplete="current-password" />
+            <span class="text-danger">@error('current_password') {{ $message }} @enderror</span>
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="password" value="{{ __('Mật khẩu mới') }}" />
-            <x-input id="password" type="password" class="mt-1 block w-full" wire:model="state.password" autocomplete="new-password" />
-            <x-input-error for="password" class="mt-2" />
+        <div class="col-md-6 col-sm-4">
+            <label for="password" class="form-label">{{ __('Mật khẩu mới') }}</label>
+            <input id="password" type="password" class="form-control" wire:model="state.password" autocomplete="new-password" />
+            <span class="text-danger">@error('password') {{ $message }} @enderror</span>
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="password_confirmation" value="{{ __('Xác nhận mật khẩu') }}" />
-            <x-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model="state.password_confirmation" autocomplete="new-password" />
-            <x-input-error for="password_confirmation" class="mt-2" />
+        <div class="col-md-6 col-sm-4">
+            <label for="password_confirmation" class="form-label">{{ __('Xác nhận mật khẩu') }}</label>
+            <input id="password_confirmation" type="password" class="form-control" wire:model="state.password_confirmation" autocomplete="new-password" />
+            <span class="text-danger">@error('password_confirmation') {{ $message }} @enderror</span>
         </div>
-    </x-slot>
 
-    <x-slot name="actions">
-        <x-action-message class="me-3" on="saved">
-            {{ __('Đã lưu thành công.') }}
-        </x-action-message>
+        <div class="col-md-6 col-sm-4">
+            <button type="submit" class="btn btn-primary">{{ __('Lưu') }}</button>
+            <span class="me-3" wire:loading wire:target="updatePassword">{{ __('Đang lưu...') }}</span>
+        </div>
 
-        <x-button>
-            {{ __('Lưu') }}
-        </x-button>
-    </x-slot>
-</x-form-section>
+        <div class="col-md-6 col-sm-4">
+            @if (session()->has('message'))
+                <div class="alert alert-success mt-2">{{ session('message') }}</div>
+            @endif
+        </div>
+    </form>
+</div>
