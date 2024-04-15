@@ -6,7 +6,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>#ID</th>
                 <th>Tên bài viết</th>
                 <th>Mô tả</th>
                 <th>Giá</th>
@@ -14,6 +14,7 @@
                 <th>Ngày kết thúc</th>
                 <th>Lớp học</th>
                 <th>Khoa</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -26,8 +27,7 @@
                 <td>{{ $courses->start_time }}</td>
                 <td>{{ $courses->end_time }}</td>
                 <td>{{ $courses->classroom }}</td>
-                <td>{{ $courses->department_id }}</td>
-
+                <td>{{ $courses->department->name }}</td>
                 <td>
                     <a href="{{ route('admin.courses.edit', $courses->id) }}" class="btn btn-primary">Chỉnh sửa</a>
                     <form action="{{ route('admin.courses.delete', $courses->id) }}" method="POST" style="display: inline;">

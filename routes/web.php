@@ -16,15 +16,7 @@ Route::get('/', function () {
     return view('home');
 })->name('');
 
-Route::controller(DepartmentController::class)->group(function () {
-    Route::get('department/list', 'department')->middleware('auth')->name('department/list'); // list student
-    Route::get('department/add/page', 'departmentAdd')->middleware('auth')->name('department/add/page'); // page student
-    Route::post('department/add/save', 'departmentSave')->name('department/add/save'); // save record student
-    Route::get('department/edit/{id}', 'departmentEdit'); // view for edit
-    Route::post('department/update', 'departmentUpdate')->name('department/update'); // update record student
-    Route::post('department/delete', 'delete')->name('department.delete');
-    Route::resource('department', 'DepartmentController');
-});
+
 
 Route::get('/courses', ['App\Http\Controllers\User\coursesController', 'index']);
 Route::get('/courses/{slug}', ['App\Http\Controllers\User\coursesController', 'viewBlog']);
@@ -51,7 +43,19 @@ Route::middleware([
         Route::get('/admin/users/{id}/edit', [UserAdminController::class, 'edit'])->name('admin.users.edit');
         Route::put('/admin/users/{id}', [UserAdminController::class, 'update'])->name('admin.users.update');
         Route::delete('/admin/users/{id}', [UserAdminController::class, 'destroy'])->name('admin.users.destroy');
+        //Khoa
+        Route::controller(DepartmentController::class)->group(function () {
+            Route::get('admin/department/list', 'department')->name('admin/department/list'); // list student
+            Route::get('admin/department/add/page', 'departmentAdd')->name('admin/department/add/page'); // page student
+            Route::post('admin/department/add/save', 'departmentSave')->name('admin/department/add/save'); // save record student
+            Route::get('admin/department/edit/{id}', 'departmentEdit'); // view for edit
+            Route::post('admin/department/update', 'departmentUpdate')->name('admin/department/update'); // update record student
+            Route::post('admin/department/delete', 'delete')->name('admin/department.delete');
+            Route::resource('admin/department', 'DepartmentController');
+        });
 
+
+        //Khoá học
         Route::get('/admin/courses', [coursesController::class, 'index'])->name('admin.courses.index');;
         Route::get('/admin/courses/create', [coursesController::class, 'create'])->name('admin.courses.create');
         Route::post('/admin/courses/store', [coursesController::class, 'store'])->name('admin.courses.store');
@@ -67,4 +71,8 @@ Route::middleware([
         Route::put('admin/blogs/update/{id}', [BlogsController::class, 'update'])->name('admin.blogs.update');
         Route::delete('admin/blogs/delete/{id}', [BlogsController::class, 'destroy'])->name('admin.blogs.delete');
     });
+
+    //Danh sách khoá học (người dùng xem)
+    Route::get('user/courses', [coursesController::class, 'indexUser'])->name('admin.courses.view');;
+
 });

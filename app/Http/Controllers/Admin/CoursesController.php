@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CoursUser;
 use Illuminate\Http\Request;
 use App\Models\Courses;
+use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
@@ -16,11 +17,17 @@ class CoursesController extends Controller
         $courses = Courses::all();
         return view('admin.courses.index', compact('courses'));
     }
+    public function indexUser()
+    {
+        $courses = Courses::all();
+        return view('user.courses.view', compact('courses'));
+    }
 
     // Tạo bài viết
     public function create()
     {
-        return view('admin.courses.create');
+        $departments = Department::all();
+        return view('admin.courses.create', compact('departments'));
     }
 
     public function store(Request $request)
