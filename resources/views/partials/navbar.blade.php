@@ -10,7 +10,7 @@
          <div class="navbar-nav mx-auto">
              <a href="/" class="nav-item nav-link active">Trang Chủ</a>
              <a href="/blogs" class="nav-item nav-link">Bài viết</a>
-             <a href="classes.html" class="nav-item nav-link">Lớp Học</a>
+             <a href="/user/courses" class="nav-item nav-link">Lớp Học</a>
              <!-- <div class="nav-item dropdown">
                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                  <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
