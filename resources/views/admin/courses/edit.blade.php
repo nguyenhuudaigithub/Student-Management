@@ -31,13 +31,20 @@
             <textarea name="end_time" id="end_time" class="form-control">{{ $courses->end_time }}</textarea>
         </div>
         <div class="form-group">
-            <label for="classroom">Mã Lớp Họcc</label>
+            <label for="classroom">Mã Lớp Học</label>
             <textarea name="classroom" id="classroom" class="form-control">{{ $courses->classroom }}</textarea>
         </div>
-        <div class="form-group">
-            <label for="department_id">Khoa</label>
-            <textarea name="department_id" id="department_id" class="form-control">{{ $courses->department_id }}</textarea>
-        </div>
+        <select name="department_id" id="department_id" class="form-control">
+    <option disabled>Please Select Department</option>
+    @foreach($departments as $department)
+        <option value="{{ $department->id }}" {{ $courses->department_id == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
+    @endforeach
+</select>
+@error('department_id')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror
+
+
         <button type="submit" class="btn btn-primary">Chỉnh Sửa Khóa Học</button>
     </form>
 </div>
